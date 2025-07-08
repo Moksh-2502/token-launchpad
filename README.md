@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Token Launchpad
 
-## Getting Started
+Token Launchpad is a decentralized application (dApp) that allows users to deploy custom ERC-20 tokens on the Polygon Mumbai testnet with configurable parameters like tax and burn rates.
 
-First, run the development server:
+## Features
+
+- Deploy custom ERC-20 tokens with your own name and symbol
+- Configure initial token supply
+- Set customizable transaction tax percentage (collected in your wallet)
+- Set customizable token burn percentage (removed from circulation)
+- Integrated wallet connection via MetaMask
+- Direct link to view your deployed token on PolygonScan
+
+## Tech Stack
+
+- **Frontend**: Next.js, React, TailwindCSS
+- **Smart Contract**: Solidity, Hardhat
+- **Web3**: ethers.js
+- **Blockchain**: Polygon Mumbai Testnet
+
+## Prerequisites
+
+- Node.js (v14+ recommended)
+- MetaMask browser extension
+- Some MATIC tokens on the Mumbai testnet for gas fees
+
+## Installation
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/yourusername/token-launchpad.git
+cd token-launchpad
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Create a `.env.local` file in the root directory with the following variables:
+
+```
+NEXT_PUBLIC_MUMBAI_RPC_URL=https://rpc-mumbai.maticvigil.com
+```
+
+## Running the Project
+
+### Compile Smart Contracts
+
+```bash
+npx hardhat compile
+```
+
+This will create the artifacts directory that contains the ABI and bytecode needed for deploying the token contract.
+
+### Start the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to use the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Connect your wallet using the "Connect Wallet" button
+2. Make sure you're connected to the Mumbai testnet in MetaMask
+3. Fill in the token parameters:
+   - Token Name (e.g., "My Token")
+   - Token Symbol (e.g., "MTK")
+   - Initial Supply
+   - Tax Percentage
+   - Burn Percentage
+4. Click "Deploy Token"
+5. Confirm the transaction in your wallet
+6. Once deployed, you'll receive the token address and a link to view it on PolygonScan
 
-## Learn More
+## Smart Contract Details
 
-To learn more about Next.js, take a look at the following resources:
+The ERC-20 token contract includes the following features:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Standard ERC-20 functionality (transfer, approve, etc.)
+- Customizable tax percentage that sends tokens to a specified wallet
+- Customizable burn percentage that removes tokens from circulation
+- Owner controls for updating parameters
+- Maximum combined fee limit of 25% to prevent abuse
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Development Notes
 
-## Deploy on Vercel
+- The contract is deployed to the Mumbai testnet for testing purposes
+- You can modify the Hardhat configuration to deploy to other networks
+- Make sure to have sufficient test MATIC for gas fees
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
