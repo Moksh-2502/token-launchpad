@@ -96,3 +96,6 @@ The ERC-20 token contract includes the following features:
 ## License
 
 MIT
+
+![image](https://github.com/user-attachments/assets/792fdb2c-58ce-46a4-9d37-ac25531d5cd3)
+![image](https://github.com/user-attachments/assets/1716006d-3426-4300-92db-a24fb113bced)
